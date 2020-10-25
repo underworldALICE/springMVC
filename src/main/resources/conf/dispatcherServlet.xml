@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--组件扫描器-->
+    <context:component-scan base-package="com.underworld.controller"/>
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value="/.jsp"/>
+    </bean>
+    <!--静态方法的处理
+            mapping：访问静态资源的url地址,使用通配符“ ** ”        符合的条件
+            location：静态资源在项目中的目录位置                  需要查找的资源
+    -->
+    <mvc:default-servlet-handler/>
+    <!--会与静态标签发生冲突,也为了响应ajax的请求,所以必须要加上这个-->
+    <mvc:annotation-driven/>
+</beans>
